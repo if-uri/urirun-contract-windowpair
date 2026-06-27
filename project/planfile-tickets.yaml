@@ -1,0 +1,117 @@
+source: code2llm
+# generated in 0.00s
+schema: code2llm.planfile_tickets.v1
+project_root: /home/tom/github/if-uri/urirun-contract-windowpair
+tickets:
+- signal: code2llm_cc
+  title: 'Reduce cyclomatic complexity: packages.consumer-go.service.checkSchema (CC=30)'
+  description: 'code2llm reports `packages.consumer-go.service.checkSchema` at `packages/consumer-go/service.go:79`
+    with cyclomatic complexity 30 (limit 15).
+
+
+    Extract smaller functions, flatten conditionals, or split strategy branches. Re-run
+    code2llm after the change and keep tests green.'
+  priority: high
+  labels:
+  - llm-ready
+  - code2llm
+  - complexity
+  - refactor
+  files:
+  - packages/consumer-go/service.go
+  dedupe_key: code2llm:cc:packages/consumer-go/service.go:packages.consumer-go.service.checkSchema
+- signal: code2llm_dup
+  title: Consolidate duplicate class Handler
+  description: 'code2llm found similar `Handler` classes in `packages/consumer/service.py`
+    and `packages/producer/service.py` with 3 overlapping methods.
+
+
+    Extract a shared base/helper or merge the duplicated behavior, then re-run code2llm
+    to confirm the duplicate signal is gone.'
+  priority: high
+  labels:
+  - llm-ready
+  - code2llm
+  - duplication
+  - refactor
+  files:
+  - packages/consumer/service.py
+  - packages/producer/service.py
+  dedupe_key: code2llm:dup:Handler:packages/consumer/service.py:packages/producer/service.py
+- signal: code2llm_smell_god_function
+  title: 'Address code smell: God Function: _run_pair'
+  description: 'code2llm reports `God Function: _run_pair` in `orchestrator/drive.py:49`.
+
+
+    Function ''_run_pair'' is oversized: CC=2, fan-out=6, mutations=8.
+
+
+    Make the smallest refactor that removes the smell and run local tests.'
+  priority: normal
+  labels:
+  - llm-ready
+  - code2llm
+  - code-smell
+  - god-function
+  files:
+  - orchestrator/drive.py
+  dedupe_key: 'code2llm:smell:god_function:orchestrator/drive.py:49:God Function:
+    _run_pair'
+- signal: code2llm_smell_god_function
+  title: 'Address code smell: God Function: do_POST'
+  description: 'code2llm reports `God Function: do_POST` in `packages/consumer/service.py:52`.
+
+
+    Function ''do_POST'' is oversized: CC=8, fan-out=16, mutations=0.
+
+
+    Make the smallest refactor that removes the smell and run local tests.'
+  priority: normal
+  labels:
+  - llm-ready
+  - code2llm
+  - code-smell
+  - god-function
+  files:
+  - packages/consumer/service.py
+  dedupe_key: 'code2llm:smell:god_function:packages/consumer/service.py:52:God Function:
+    do_POST'
+- signal: code2llm_smell_god_function
+  title: 'Address code smell: God Function: do_POST'
+  description: 'code2llm reports `God Function: do_POST` in `packages/producer/service.py:44`.
+
+
+    Function ''do_POST'' is oversized: CC=4, fan-out=13, mutations=0.
+
+
+    Make the smallest refactor that removes the smell and run local tests.'
+  priority: normal
+  labels:
+  - llm-ready
+  - code2llm
+  - code-smell
+  - god-function
+  files:
+  - packages/producer/service.py
+  dedupe_key: 'code2llm:smell:god_function:packages/producer/service.py:44:God Function:
+    do_POST'
+- signal: code2llm_smell_god_function
+  title: 'Address code smell: God Function: validate_doc'
+  description: 'code2llm reports `God Function: validate_doc` in `ci/nl_to_contract.py:42`.
+
+
+    Function ''validate_doc'' is oversized: CC=10, fan-out=8, mutations=7.
+
+
+    Make the smallest refactor that removes the smell and run local tests.'
+  priority: normal
+  labels:
+  - llm-ready
+  - code2llm
+  - code-smell
+  - god-function
+  files:
+  - ci/nl_to_contract.py
+  dedupe_key: 'code2llm:smell:god_function:ci/nl_to_contract.py:42:God Function: validate_doc'
+applied: []
+skipped: []

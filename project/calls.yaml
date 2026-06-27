@@ -1,0 +1,224 @@
+project: /home/tom/github/if-uri/urirun-contract-windowpair
+generated_from: code2llm call graph analysis
+stats:
+  total_nodes: 19
+  total_edges: 14
+  modules_count: 5
+nodes:
+  packages.producer.service.Handler.do_POST:
+    name: do_POST
+    module: packages.producer.service
+    line: 44
+    cyclomatic_complexity: 4
+    calls_out: 19
+    calls_in: 0
+  ci.nl_to_contract.main:
+    name: main
+    module: ci.nl_to_contract
+    line: 75
+    cyclomatic_complexity: 9
+    calls_out: 17
+    calls_in: 0
+  ci.nl_to_contract.validate_doc:
+    name: validate_doc
+    module: ci.nl_to_contract
+    line: 42
+    cyclomatic_complexity: 10
+    calls_out: 19
+    calls_in: 1
+  packages.consumer-go.service.checkSchema:
+    name: checkSchema
+    module: packages.consumer-go.service
+    line: 79
+    cyclomatic_complexity: 30
+    calls_out: 8
+    calls_in: 1
+  packages.consumer-go.service.typeOK:
+    name: typeOK
+    module: packages.consumer-go.service
+    line: 59
+    cyclomatic_complexity: 10
+    calls_out: 1
+    calls_in: 1
+  ci.nl_to_contract.ask_llm:
+    name: ask_llm
+    module: ci.nl_to_contract
+    line: 29
+    cyclomatic_complexity: 1
+    calls_out: 6
+    calls_in: 1
+  packages.consumer.service.restore_handler:
+    name: restore_handler
+    module: packages.consumer.service
+    line: 27
+    cyclomatic_complexity: 1
+    calls_out: 2
+    calls_in: 1
+  orchestrator.drive.main:
+    name: main
+    module: orchestrator.drive
+    line: 69
+    cyclomatic_complexity: 3
+    calls_out: 6
+    calls_in: 0
+  packages.producer.service.close_handler:
+    name: close_handler
+    module: packages.producer.service
+    line: 26
+    cyclomatic_complexity: 1
+    calls_out: 0
+    calls_in: 1
+  orchestrator.drive.post:
+    name: post
+    module: orchestrator.drive
+    line: 31
+    cyclomatic_complexity: 1
+    calls_out: 6
+    calls_in: 2
+  orchestrator.drive.wait_ready:
+    name: wait_ready
+    module: orchestrator.drive
+    line: 38
+    cyclomatic_complexity: 3
+    calls_out: 4
+    calls_in: 3
+  packages.consumer-go.service.restoreHandler:
+    name: restoreHandler
+    module: packages.consumer-go.service
+    line: 177
+    cyclomatic_complexity: 3
+    calls_out: 2
+    calls_in: 1
+  packages.consumer-go.service.loadContracts:
+    name: loadContracts
+    module: packages.consumer-go.service
+    line: 30
+    cyclomatic_complexity: 6
+    calls_out: 9
+    calls_in: 1
+  packages.consumer-go.service.main:
+    name: main
+    module: packages.consumer-go.service
+    line: 233
+    cyclomatic_complexity: 4
+    calls_out: 10
+    calls_in: 0
+  orchestrator.drive._run_pair:
+    name: _run_pair
+    module: orchestrator.drive
+    line: 49
+    cyclomatic_complexity: 2
+    calls_out: 11
+    calls_in: 2
+  packages.consumer-go.service.handleRun:
+    name: handleRun
+    module: packages.consumer-go.service
+    line: 200
+    cyclomatic_complexity: 8
+    calls_out: 6
+    calls_in: 0
+  packages.consumer.service.Handler.do_POST:
+    name: do_POST
+    module: packages.consumer.service
+    line: 52
+    cyclomatic_complexity: 8
+    calls_out: 20
+    calls_in: 0
+  ci.nl_to_contract._mock:
+    name: _mock
+    module: ci.nl_to_contract
+    line: 68
+    cyclomatic_complexity: 2
+    calls_out: 3
+    calls_in: 1
+  packages.consumer-go.service.writeJSON:
+    name: writeJSON
+    module: packages.consumer-go.service
+    line: 194
+    cyclomatic_complexity: 1
+    calls_out: 5
+    calls_in: 2
+edges:
+- caller: packages.consumer.service.Handler.do_POST
+  callee: packages.consumer.service.restore_handler
+  call_type: resolved
+- caller: packages.producer.service.Handler.do_POST
+  callee: packages.producer.service.close_handler
+  call_type: resolved
+- caller: packages.consumer-go.service.checkSchema
+  callee: packages.consumer-go.service.typeOK
+  call_type: resolved
+- caller: packages.consumer-go.service.handleRun
+  callee: packages.consumer-go.service.checkSchema
+  call_type: resolved
+- caller: packages.consumer-go.service.handleRun
+  callee: packages.consumer-go.service.writeJSON
+  call_type: resolved
+- caller: packages.consumer-go.service.handleRun
+  callee: packages.consumer-go.service.restoreHandler
+  call_type: resolved
+- caller: packages.consumer-go.service.main
+  callee: packages.consumer-go.service.loadContracts
+  call_type: resolved
+- caller: packages.consumer-go.service.main
+  callee: packages.consumer-go.service.writeJSON
+  call_type: resolved
+- caller: ci.nl_to_contract.main
+  callee: ci.nl_to_contract.validate_doc
+  call_type: resolved
+- caller: ci.nl_to_contract.main
+  callee: ci.nl_to_contract._mock
+  call_type: resolved
+- caller: ci.nl_to_contract.main
+  callee: ci.nl_to_contract.ask_llm
+  call_type: resolved
+- caller: orchestrator.drive._run_pair
+  callee: orchestrator.drive.post
+  call_type: resolved
+- caller: orchestrator.drive.main
+  callee: orchestrator.drive.wait_ready
+  call_type: resolved
+- caller: orchestrator.drive.main
+  callee: orchestrator.drive._run_pair
+  call_type: resolved
+modules:
+  ci.nl_to_contract:
+  - ci.nl_to_contract._mock
+  - ci.nl_to_contract.ask_llm
+  - ci.nl_to_contract.main
+  - ci.nl_to_contract.validate_doc
+  orchestrator.drive:
+  - orchestrator.drive._run_pair
+  - orchestrator.drive.main
+  - orchestrator.drive.post
+  - orchestrator.drive.wait_ready
+  packages.consumer-go.service:
+  - packages.consumer-go.service.checkSchema
+  - packages.consumer-go.service.handleRun
+  - packages.consumer-go.service.loadContracts
+  - packages.consumer-go.service.main
+  - packages.consumer-go.service.restoreHandler
+  - packages.consumer-go.service.typeOK
+  - packages.consumer-go.service.writeJSON
+  packages.consumer.service:
+  - packages.consumer.service.Handler.do_POST
+  - packages.consumer.service.restore_handler
+  packages.producer.service:
+  - packages.producer.service.Handler.do_POST
+  - packages.producer.service.close_handler
+entry_points:
+- ci.emit_handlers.emit
+- ci.nl_to_contract.main
+- orchestrator.drive.main
+- packages.consumer-go.service.handleRun
+- packages.consumer-go.service.main
+- packages.consumer.service.Handler._err
+- packages.consumer.service.Handler.do_GET
+- packages.consumer.service.Handler.do_POST
+- packages.consumer.service.Handler.log_message
+- packages.producer.service.Handler.do_GET
+- packages.producer.service.Handler.do_POST
+- packages.producer.service.Handler.log_message
+- src.handlers_generated.close
+- src.handlers_generated.restore
+- toolkit.contracts_io.load

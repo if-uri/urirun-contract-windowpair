@@ -1,0 +1,305 @@
+name: Code Quality Improvement
+project_name: ''
+project_type: prefactoring
+domain: dev-tools
+goal: Improve code quality using prefact
+goals:
+- Fix all prefact-detected issues
+- Improve code maintainability
+- Ensure consistent code style
+quality_gates:
+- metric: Prefact Issues
+  threshold: '0'
+sprints:
+- id: sprint-1
+  name: Code Quality Improvements
+  duration: 2 weeks
+  objectives:
+  - Fix code quality issues
+  task_patterns:
+  - id: ticket-78128a01
+    name: Fix string-concat issues
+    description: Resolve 1 string-concat issues in ci/nl_to_contract.py
+    task_type: prefactor
+    priority: medium
+    estimate: 1d
+    files:
+    - ci/nl_to_contract.py
+    rule_id: string-concat
+    count: 1
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-919ecdfa
+    name: Fix unused-imports issues
+    description: Resolve 2 unused-imports issues in ci/nl_to_contract.py
+    task_type: prefactor
+    priority: medium
+    estimate: 1d
+    files:
+    - ci/nl_to_contract.py
+    rule_id: unused-imports
+    count: 2
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-c7cfe99c
+    name: Fix ai-boilerplate issues
+    description: Resolve 1 ai-boilerplate issues in ci/nl_to_contract.py
+    task_type: prefactor
+    priority: medium
+    estimate: 1d
+    files:
+    - ci/nl_to_contract.py
+    rule_id: ai-boilerplate
+    count: 1
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-6ca63ff3
+    name: Fix unused-imports issues
+    description: Resolve 2 unused-imports issues in ci/emit_handlers.py
+    task_type: prefactor
+    priority: medium
+    estimate: 1d
+    files:
+    - ci/emit_handlers.py
+    rule_id: unused-imports
+    count: 2
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-1b008056
+    name: Fix ai-boilerplate issues
+    description: Resolve 1 ai-boilerplate issues in ci/emit_handlers.py
+    task_type: prefactor
+    priority: medium
+    estimate: 1d
+    files:
+    - ci/emit_handlers.py
+    rule_id: ai-boilerplate
+    count: 1
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-6ab91bfc
+    name: Fix smart-return-type issues
+    description: Resolve 1 smart-return-type issues in orchestrator/drive.py
+    task_type: prefactor
+    priority: medium
+    estimate: 1d
+    files:
+    - orchestrator/drive.py
+    rule_id: smart-return-type
+    count: 1
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-247d9372
+    name: Fix string-concat issues
+    description: Resolve 2 string-concat issues in orchestrator/drive.py
+    task_type: prefactor
+    priority: medium
+    estimate: 1d
+    files:
+    - orchestrator/drive.py
+    rule_id: string-concat
+    count: 2
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-b20a81b9
+    name: Fix unused-imports issues
+    description: Resolve 2 unused-imports issues in orchestrator/drive.py
+    task_type: prefactor
+    priority: medium
+    estimate: 1d
+    files:
+    - orchestrator/drive.py
+    rule_id: unused-imports
+    count: 2
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-ebc76cde
+    name: Fix magic-numbers issues
+    description: Resolve 1 magic-numbers issues in orchestrator/drive.py
+    task_type: prefactor
+    priority: medium
+    estimate: 1d
+    files:
+    - orchestrator/drive.py
+    rule_id: magic-numbers
+    count: 1
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-bb2233b8
+    name: Fix ai-boilerplate issues
+    description: Resolve 1 ai-boilerplate issues in orchestrator/drive.py
+    task_type: prefactor
+    priority: medium
+    estimate: 1d
+    files:
+    - orchestrator/drive.py
+    rule_id: ai-boilerplate
+    count: 1
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-3d5c7779
+    name: Fix llm-hallucinations issues
+    description: Resolve 2 llm-hallucinations issues in src/handlers_generated.py
+    task_type: prefactor
+    priority: medium
+    estimate: 1d
+    files:
+    - src/handlers_generated.py
+    rule_id: llm-hallucinations
+    count: 2
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-2a30d71f
+    name: Fix smart-return-type issues
+    description: Resolve 3 smart-return-type issues in packages/consumer/service.py
+    task_type: prefactor
+    priority: medium
+    estimate: 1d
+    files:
+    - packages/consumer/service.py
+    rule_id: smart-return-type
+    count: 3
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-4990d84a
+    name: Fix unused-imports issues
+    description: Resolve 2 unused-imports issues in packages/consumer/service.py
+    task_type: prefactor
+    priority: medium
+    estimate: 1d
+    files:
+    - packages/consumer/service.py
+    rule_id: unused-imports
+    count: 2
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-a7ac4d09
+    name: Fix magic-numbers issues
+    description: Resolve 6 magic-numbers issues in packages/consumer/service.py
+    task_type: prefactor
+    priority: high
+    estimate: 2d
+    files:
+    - packages/consumer/service.py
+    rule_id: magic-numbers
+    count: 6
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-3b74557a
+    name: Fix ai-boilerplate issues
+    description: Resolve 1 ai-boilerplate issues in packages/consumer/service.py
+    task_type: prefactor
+    priority: medium
+    estimate: 1d
+    files:
+    - packages/consumer/service.py
+    rule_id: ai-boilerplate
+    count: 1
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-3b2335bd
+    name: Fix unused-imports issues
+    description: Resolve 2 unused-imports issues in toolkit/contract_gate.py
+    task_type: prefactor
+    priority: medium
+    estimate: 1d
+    files:
+    - toolkit/contract_gate.py
+    rule_id: unused-imports
+    count: 2
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-6d82c221
+    name: Fix smart-return-type issues
+    description: Resolve 3 smart-return-type issues in packages/producer/service.py
+    task_type: prefactor
+    priority: medium
+    estimate: 1d
+    files:
+    - packages/producer/service.py
+    rule_id: smart-return-type
+    count: 3
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-8dd21201
+    name: Fix unused-imports issues
+    description: Resolve 2 unused-imports issues in packages/producer/service.py
+    task_type: prefactor
+    priority: medium
+    estimate: 1d
+    files:
+    - packages/producer/service.py
+    rule_id: unused-imports
+    count: 2
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-35a2f59c
+    name: Fix magic-numbers issues
+    description: Resolve 4 magic-numbers issues in packages/producer/service.py
+    task_type: prefactor
+    priority: medium
+    estimate: 2d
+    files:
+    - packages/producer/service.py
+    rule_id: magic-numbers
+    count: 4
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-345066e1
+    name: Fix ai-boilerplate issues
+    description: Resolve 1 ai-boilerplate issues in packages/producer/service.py
+    task_type: prefactor
+    priority: medium
+    estimate: 1d
+    files:
+    - packages/producer/service.py
+    rule_id: ai-boilerplate
+    count: 1
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-61ac0fe1
+    name: Fix smart-return-type issues
+    description: Resolve 1 smart-return-type issues in toolkit/contracts_io.py
+    task_type: prefactor
+    priority: medium
+    estimate: 1d
+    files:
+    - toolkit/contracts_io.py
+    rule_id: smart-return-type
+    count: 1
+    model_hints:
+      planning: balanced
+      implementation: balanced
+  - id: ticket-9aba4a4a
+    name: Fix wildcard-imports issues
+    description: Resolve 2 wildcard-imports issues in toolkit/contract_gate.py
+    task_type: prefactor
+    priority: medium
+    estimate: 1d
+    files:
+    - toolkit/contract_gate.py
+    rule_id: wildcard-imports
+    count: 2
+    model_hints:
+      planning: balanced
+      implementation: balanced

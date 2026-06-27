@@ -1,0 +1,83 @@
+# code2llm | 24f 1452L | python:9,yaml:4,shell:3,json:1,yml:1,go:1 | 2026-06-27
+# generated in 0.00s
+# CC̅=4.3 | critical:1/28 | dups:1 | cycles:0
+
+HEALTH[2]:
+  🔴 DUP   1 classes duplicated
+  🟡 CC    checkSchema CC=30 (limit:15)
+
+REFACTOR[2]:
+  1. rm duplicates  (-1 dup classes)
+  2. split 1 high-CC methods  (CC>15)
+
+PIPELINES[13]:
+  [1] Src [_err]: _err
+      PURITY: 100% pure
+  [2] Src [do_GET]: do_GET
+      PURITY: 100% pure
+  [3] Src [do_POST]: do_POST → restore_handler
+      PURITY: 100% pure
+  [4] Src [do_GET]: do_GET
+      PURITY: 100% pure
+  [5] Src [do_POST]: do_POST → close_handler
+      PURITY: 100% pure
+  [6] Src [handleRun]: handleRun → checkSchema → typeOK
+      PURITY: 100% pure
+  [7] Src [main]: main → loadContracts
+      PURITY: 100% pure
+  [8] Src [close]: close
+      PURITY: 100% pure
+  [9] Src [restore]: restore
+      PURITY: 100% pure
+  [10] Src [load]: load
+      PURITY: 100% pure
+  [11] Src [main]: main → validate_doc
+      PURITY: 100% pure
+  [12] Src [main]: main → wait_ready
+      PURITY: 100% pure
+  [13] Src [emit]: emit
+      PURITY: 100% pure
+
+LAYERS:
+  packages/                       CC̄=5.1    ←in:0  →out:0  ×DUP
+  │ !! service.go                 249L  0C    7m  CC=30     ←0
+  │ service                     79L  1C    5m  CC=8      ←0  ×DUP
+  │ service                     66L  1C    4m  CC=4      ←0  ×DUP
+  │ Dockerfile                  15L  0C    0m  CC=0.0    ←0
+  │ Dockerfile                  11L  0C    0m  CC=0.0    ←0
+  │ Dockerfile                  11L  0C    0m  CC=0.0    ←0
+  │
+  toolkit/                        CC̄=5.0    ←in:0  →out:0
+  │ contracts_io                14L  0C    1m  CC=5      ←0
+  │ contract_gate               12L  0C    0m  CC=0.0    ←0
+  │
+  ci/                             CC̄=4.6    ←in:0  →out:0
+  │ nl_to_contract             103L  0C    4m  CC=10     ←0
+  │ emit_handlers               35L  0C    1m  CC=1      ←0
+  │ regen_check                 27L  0C    0m  CC=0.0    ←0
+  │ pre_commit.sh               10L  0C    0m  CC=0.0    ←0
+  │
+  orchestrator/                   CC̄=2.2    ←in:0  →out:0
+  │ drive                       86L  0C    4m  CC=3      ←0
+  │ Dockerfile                   8L  0C    0m  CC=0.0    ←0
+  │
+  src/                            CC̄=1.0    ←in:0  →out:0
+  │ handlers_generated          19L  0C    2m  CC=1      ←0
+  │
+  ./                              CC̄=0.0    ←in:0  →out:0
+  │ planfile.yaml              331L  0C    0m  CC=0.0    ←0
+  │ contracts.json             119L  0C    0m  CC=0.0    ←0
+  │ prefact.yaml                94L  0C    0m  CC=0.0    ←0
+  │ project.sh                  69L  0C    0m  CC=0.0    ←0
+  │ docker-compose.yml          42L  0C    0m  CC=0.0    ←0
+  │ Makefile                    30L  0C    0m  CC=0.0    ←0
+  │ .pre-commit-config.yaml     10L  0C    0m  CC=0.0    ←0
+  │ litellm.config.yaml          8L  0C    0m  CC=0.0    ←0
+  │ tree.sh                      4L  0C    0m  CC=0.0    ←0
+  │
+
+COUPLING: no cross-package imports detected
+
+EXTERNAL:
+  validation: run `vallm batch .` → validation.toon
+  duplication: run `redup scan .` → duplication.toon

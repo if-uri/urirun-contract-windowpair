@@ -1,0 +1,65 @@
+flowchart TD
+%% generated in 0.00s
+    subgraph ci__emit_handlers
+        ci__emit_handlers__emit["emit"]
+    end
+    subgraph ci__nl_to_contract
+        ci__nl_to_contract__ask_llm["ask_llm"]
+        ci__nl_to_contract__validate_doc("validate_doc CC=10")
+        ci__nl_to_contract___mock["_mock"]
+        ci__nl_to_contract__main("main CC=9")
+    end
+    subgraph orchestrator__drive
+        orchestrator__drive__post["post"]
+        orchestrator__drive__wait_ready["wait_ready"]
+        orchestrator__drive___run_pair["_run_pair"]
+        orchestrator__drive__main["main"]
+    end
+    subgraph packages__consumer
+        packages__consumer__service__restore_handler["restore_handler"]
+        packages__consumer__service__Handler__log_message["log_message"]
+        packages__consumer__service__Handler___err["_err"]
+        packages__consumer__service__Handler__do_GET["do_GET"]
+        packages__consumer__service__Handler__do_POST("do_POST CC=8")
+    end
+    subgraph packages__consumer_go
+        packages__consumer_go__service__loadContracts["loadContracts"]
+        packages__consumer_go__service__typeOK("typeOK CC=10")
+        packages__consumer_go__service__checkSchema{{checkSchema CC=30}}
+        packages__consumer_go__service__restoreHandler["restoreHandler"]
+        packages__consumer_go__service__writeJSON["writeJSON"]
+        packages__consumer_go__service__handleRun("handleRun CC=8")
+        packages__consumer_go__service__main["main"]
+    end
+    subgraph packages__producer
+        packages__producer__service__close_handler["close_handler"]
+        packages__producer__service__Handler__log_message["log_message"]
+        packages__producer__service__Handler__do_GET["do_GET"]
+        packages__producer__service__Handler__do_POST["do_POST"]
+    end
+    subgraph src__handlers_generated
+        src__handlers_generated__close["close"]
+        src__handlers_generated__restore["restore"]
+    end
+    subgraph toolkit__contracts_io
+        toolkit__contracts_io__load["load"]
+    end
+    packages__consumer__service__Handler__do_POST --> packages__consumer__service__restore_handler
+    packages__producer__service__Handler__do_POST --> packages__producer__service__close_handler
+    packages__consumer_go__service__checkSchema --> packages__consumer_go__service__typeOK
+    packages__consumer_go__service__handleRun --> packages__consumer_go__service__checkSchema
+    packages__consumer_go__service__handleRun --> packages__consumer_go__service__writeJSON
+    packages__consumer_go__service__handleRun --> packages__consumer_go__service__restoreHandler
+    packages__consumer_go__service__main --> packages__consumer_go__service__loadContracts
+    packages__consumer_go__service__main --> packages__consumer_go__service__writeJSON
+    ci__nl_to_contract__main --> ci__nl_to_contract__validate_doc
+    ci__nl_to_contract__main --> ci__nl_to_contract___mock
+    ci__nl_to_contract__main --> ci__nl_to_contract__ask_llm
+    orchestrator__drive___run_pair --> orchestrator__drive__post
+    orchestrator__drive__main --> orchestrator__drive__wait_ready
+    orchestrator__drive__main --> orchestrator__drive___run_pair
+
+    classDef highCC fill:#ff6b6b,stroke:#c92a2a,color:#fff
+    classDef medCC fill:#ffd43b,stroke:#f08c00,color:#000
+    class packages__consumer_go__service__checkSchema highCC
+    class packages__consumer__service__Handler__do_POST,packages__consumer_go__service__typeOK,packages__consumer_go__service__handleRun,ci__nl_to_contract__validate_doc,ci__nl_to_contract__main medCC

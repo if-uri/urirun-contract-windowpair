@@ -1,0 +1,26 @@
+flowchart TD
+%% generated in 0.00s
+
+    %% Entry points (blue)
+    classDef entry fill:#4dabf7,stroke:#1971c2,color:#fff
+
+    subgraph Core
+        packages__consumer__service__Handler__log_message["log_message"]
+        packages__consumer__service__Handler___err["_err"]
+        packages__consumer__service__Handler__do_GET["do_GET"]
+        packages__consumer__service__Handler__do_POST["do_POST"]
+        packages__producer__service__Handler__log_message["log_message"]
+        packages__producer__service__Handler__do_GET["do_GET"]
+        packages__producer__service__Handler__do_POST["do_POST"]
+        packages__consumer_go__service__typeOK("typeOK CC=10")
+        packages__consumer_go__service__checkSchema{{checkSchema CC=30}}
+        packages__consumer_go__service__handleRun["handleRun"]
+        packages__consumer_go__service__main["main"]
+        src__handlers_generated__close["close"]
+        src__handlers_generated__restore["restore"]
+        toolkit__contracts_io__load["load"]
+        ci__nl_to_contract__main["main"]
+        ...["+2 more"]
+    end
+
+    class packages__consumer__service__Handler__log_message,packages__consumer__service__Handler___err,packages__consumer__service__Handler__do_GET,packages__consumer__service__Handler__do_POST,packages__producer__service__Handler__log_message,packages__producer__service__Handler__do_GET,packages__producer__service__Handler__do_POST,packages__consumer_go__service__handleRun,packages__consumer_go__service__main,src__handlers_generated__close entry

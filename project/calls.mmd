@@ -1,0 +1,45 @@
+flowchart LR
+%% generated in 0.00s
+    subgraph ci__nl_to_contract
+        ci__nl_to_contract__main["main"]
+        ci__nl_to_contract__validate_doc["validate_doc"]
+        ci__nl_to_contract__ask_llm["ask_llm"]
+        ci__nl_to_contract___mock["_mock"]
+    end
+    subgraph orchestrator__drive
+        orchestrator__drive__main["main"]
+        orchestrator__drive__post["post"]
+        orchestrator__drive__wait_ready["wait_ready"]
+        orchestrator__drive___run_pair["_run_pair"]
+    end
+    subgraph packages__consumer
+        packages__consumer__service__restore_handler["restore_handler"]
+        packages__consumer__service__Handler__do_POST["do_POST"]
+    end
+    subgraph packages__consumer_go
+        packages__consumer_go__service__checkSchema["checkSchema"]
+        packages__consumer_go__service__typeOK["typeOK"]
+        packages__consumer_go__service__restoreHandler["restoreHandler"]
+        packages__consumer_go__service__loadContracts["loadContracts"]
+        packages__consumer_go__service__main["main"]
+        packages__consumer_go__service__handleRun["handleRun"]
+        packages__consumer_go__service__writeJSON["writeJSON"]
+    end
+    subgraph packages__producer
+        packages__producer__service__Handler__do_POST["do_POST"]
+        packages__producer__service__close_handler["close_handler"]
+    end
+    packages__consumer__service__Handler__do_POST --> packages__consumer__service__restore_handler
+    packages__producer__service__Handler__do_POST --> packages__producer__service__close_handler
+    packages__consumer_go__service__checkSchema --> packages__consumer_go__service__typeOK
+    packages__consumer_go__service__handleRun --> packages__consumer_go__service__checkSchema
+    packages__consumer_go__service__handleRun --> packages__consumer_go__service__writeJSON
+    packages__consumer_go__service__handleRun --> packages__consumer_go__service__restoreHandler
+    packages__consumer_go__service__main --> packages__consumer_go__service__loadContracts
+    packages__consumer_go__service__main --> packages__consumer_go__service__writeJSON
+    ci__nl_to_contract__main --> ci__nl_to_contract__validate_doc
+    ci__nl_to_contract__main --> ci__nl_to_contract___mock
+    ci__nl_to_contract__main --> ci__nl_to_contract__ask_llm
+    orchestrator__drive___run_pair --> orchestrator__drive__post
+    orchestrator__drive__main --> orchestrator__drive__wait_ready
+    orchestrator__drive__main --> orchestrator__drive___run_pair

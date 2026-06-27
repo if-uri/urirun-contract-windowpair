@@ -1,0 +1,54 @@
+# urirun-contract-windowpair | 14f 846L | python:9,shell:3,less:1,go:1 | 2026-06-27
+# stats: 14 func | 2 cls | 14 mod | CC̄=2.9 | critical:1 | cycles:0
+# alerts[5]: CC validate_doc=10; CC main=9; CC load=5; CC wait_ready=3; CC main=3
+# hotspots[5]: main fan=10; ask_llm fan=6; validate_doc fan=6; post fan=6; _run_pair fan=6
+# evolution: baseline
+# Keys: M=modules, D=details, i=imports, e=exports, c=classes, f=functions, m=methods
+M[14]:
+  app.doql.less,61
+  ci/emit_handlers.py,36
+  ci/nl_to_contract.py,104
+  ci/pre_commit.sh,11
+  ci/regen_check.py,28
+  orchestrator/drive.py,87
+  packages/consumer/service.py,80
+  packages/consumer-go/service.go,250
+  packages/producer/service.py,67
+  project.sh,69
+  src/handlers_generated.py,20
+  toolkit/contract_gate.py,13
+  toolkit/contracts_io.py,15
+  tree.sh,5
+D:
+  ci/emit_handlers.py:
+    e: emit
+    emit(contracts_path)
+  ci/nl_to_contract.py:
+    e: ask_llm,validate_doc,_mock,main
+    ask_llm(readme)
+    validate_doc(doc)
+    _mock(bad)
+    main()
+  ci/regen_check.py:
+  orchestrator/drive.py:
+    e: post,wait_ready,_run_pair,main
+    post(url;payload)
+    wait_ready(url;tries)
+    _run_pair(label;producer_url;consumer_url)
+    main()
+  packages/consumer/service.py:
+    e: restore_handler,Handler
+    Handler: log_message(0),_err(3),do_GET(0),do_POST(0)
+    restore_handler(snapshot)
+  packages/producer/service.py:
+    e: close_handler,Handler
+    Handler: log_message(0),do_GET(0),do_POST(0)
+    close_handler(id)
+  src/handlers_generated.py:
+    e: close,restore
+    close(id)
+    restore(snapshot)
+  toolkit/contract_gate.py:
+  toolkit/contracts_io.py:
+    e: load
+    load(path)
